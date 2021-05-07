@@ -1,8 +1,8 @@
-const getPokemonUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
+const getUrl = id => `https://pokeapi.co/api/v2/pokemon/${id}`
 var list = []
 const setList = pokemon => this.list.push(pokemon);
-const generatePokemonPromises = (param) =>Array(150).fill().map((_, index) =>
-    fetch(getPokemonUrl(index + 1)).then(response => response.json()))
+const generatePromises = (param) =>Array(200).fill().map((_, index) =>
+    fetch(getUrl(index + 1)).then(response => response.json()))
     
 const generateHTML = pokemons => pokemons.reduce((accumulator, pokemon) => {
     const elementTypes = pokemon.types.map(typeInfo => typeInfo.type.name)
@@ -15,7 +15,7 @@ const generateHTML = pokemons => pokemons.reduce((accumulator, pokemon) => {
             <p class="card-subtitle">${elementTypes.join( ' | ')}</p>
         </li>
     </button>
-    `
+    `  
     setList(pokemon)
     return accumulator
 }, '')
@@ -23,14 +23,14 @@ const generateHTML = pokemons => pokemons.reduce((accumulator, pokemon) => {
 const insertPokemonIntoPage = pokemons => {
     const ul = document.querySelector('[data-js="pokedex"]')
     ul.innerHTML = pokemons
-    return generatePokemonPromises();
+    return generatePromises();
 }
 
 const text = id => {
     let pokemon = this.list[id];
     let stats = "";
     pokemon.stats.forEach(el => {
-        stats += `<label href="#" class="list-group-item list-group-item-action d-flex align-items-center">
+        stats += `<label class="list-group-item list-group-item-action d-flex align-items-center"></a>
         <span class="stats">${el.stat.name.replace('-',' ')}: ${el.base_stat}</span>
         </label>`
     });
@@ -53,7 +53,7 @@ const text = id => {
     }  
     return text
 }
-const pokemonPromises = generatePokemonPromises()
+const pokemonPromises = generatePromises()
 
 
 Promise.all(pokemonPromises).then(generateHTML).then(insertPokemonIntoPage).then(test =>{

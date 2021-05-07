@@ -1,0 +1,53 @@
+@import url('https://fonts.googleapis.com/css2?family=Antonio&display=swap');
+
+*{
+    padding:0;
+    margin:0;
+    vertical-align:baseline;
+    list-style:none;
+    border:0;
+    font-family: 'Antonio', sans-serif;
+}
+body{
+    background: #1b252f !important;
+}
+img{
+    margin-left: auto;
+    margin-right: auto;
+    width: 6em
+}
+h2{
+    font-size: 20px !important; 
+    color: #9e8686 !important;
+    text-transform: uppercase;
+}
+
+.btn-outline-secondary{
+    width: 24% !important;
+    margin: 3px;
+}
+.btn{
+    border: 2px solid black !important;
+}
+.btn-outline-secondary:hover{
+    color: black !important;
+}
+.card{
+    background-color: #191515 !important;
+}
+header{
+    margin-top: 20px;
+    margin-bottom: 5px;
+}
+header .pokebola{
+    float: right;
+    width: 15vh;
+}
+header .logo{
+    width: 25vh;
+}
+@media (min-width: 1200px){
+    .container {
+        max-width: 919px !important;
+    }
+}
